@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  zreview-mysql:
+    image: mysql:8.0.29
+    container_name: zreview-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=zreview
+      - MYSQL_ROOT_PASSWORD=zreview
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+  zreview-redis:
+    image: redis:alpine
+    command: redis-server --port 6379
+    container_name: zreview-redis
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    ports:
+      - "6379:6379"
