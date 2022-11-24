@@ -5,8 +5,6 @@ spring:
     username: root
     password: 1234
   jpa:
-    hibernate:
-      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
@@ -27,3 +25,15 @@ spring:
     default-produces-media-type: application/json
     paths-to-match:
       - /v1/**
+
+cloud:
+  aws:
+    credentials:
+      access-key: AKIA525OD6E6XJDNER7W        # AWS IAM AccessKey 적기
+      secret-key: gtzTqq85SvYtfK8ptXWTyi3JoVFHgoGhNMMF22lG    # AWS IAM SecretKey 적기
+    s3:
+      bucket: zreview-bucket    # ex) marryting-gyunny
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
