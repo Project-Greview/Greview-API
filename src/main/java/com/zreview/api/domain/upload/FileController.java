@@ -26,7 +26,7 @@ public class FileController {
          return ResponseEntity.ok(urls);
      }
 
-    @Operation(summary = "파일 반환", tags = { "File Controller" })
+    @Operation(summary = "파일 s3 presigned url 반환", tags = { "File Controller" })
     @GetMapping("/file/{reviewId}")
     public ResponseEntity<?> getFile(@PathVariable Long reviewId) throws IOException {
         List<String> urls=s3UploadService.getFile(reviewId);
