@@ -53,23 +53,11 @@ public class Review {
     @OneToMany(mappedBy = "review")
     private List<Hashtag> hashtags = new ArrayList<>();
 
-    @OneToMany
-    private List<File> file= new ArrayList<>();
-
     public Review(Member member, PostReviewRequest postReviewRequest) {
         this.member=member;
         this.title=postReviewRequest.getTitle();
         this.content=postReviewRequest.getContent();
         this.rating=postReviewRequest.getRating();
         this.views=0;
-    }
-
-    public Review(Review review, List<File> urls) {
-        this.member=review.getMember();
-        this.title=review.getTitle();
-        this.content=review.getContent();
-        this.rating= review.getRating();
-        this.views= review.getRating();
-        this.file=urls;
     }
 }
