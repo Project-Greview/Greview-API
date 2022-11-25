@@ -1,5 +1,7 @@
-package com.zreview.api.domain.review.model;
+package com.zreview.api.domain.location.model;
 
+import com.zreview.api.domain.review.model.Hashtag;
+import com.zreview.api.domain.review.model.Review;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

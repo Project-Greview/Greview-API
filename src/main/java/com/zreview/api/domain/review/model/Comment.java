@@ -21,12 +21,16 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="member_id")
     private Member member;
 
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name="review_id")
+    private Review review;
 
     @CreatedDate
     private LocalDateTime created_at;
@@ -37,7 +41,7 @@ public class Comment {
     @Column(columnDefinition = "boolean default 0")
     private Boolean is_deleted;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "parent_id")
     private Comment parent;
 

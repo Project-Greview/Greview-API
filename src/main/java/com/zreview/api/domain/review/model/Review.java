@@ -1,8 +1,8 @@
 package com.zreview.api.domain.review.model;
 
+import com.zreview.api.domain.location.model.Location;
 import com.zreview.api.domain.member.model.Member;
 import com.zreview.api.domain.review.api.request.PostReviewRequest;
-import com.zreview.api.domain.upload.File;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -27,14 +27,14 @@ public class Review {
 
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="member_id")
     private Member member;
 
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="location_id")
     private Location location;
 
@@ -49,9 +49,6 @@ public class Review {
 
     @Column(columnDefinition = "integer default 0",nullable = false)
     private int rating; //별점
-
-    @OneToMany(mappedBy = "review")
-    private List<Hashtag> hashtags = new ArrayList<>();
 
     public Review(Member member, PostReviewRequest postReviewRequest) {
         this.member=member;

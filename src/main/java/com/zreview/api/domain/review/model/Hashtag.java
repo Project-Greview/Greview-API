@@ -1,6 +1,6 @@
 package com.zreview.api.domain.review.model;
 
-import lombok.AccessLevel;
+import com.zreview.api.domain.location.model.Location;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,11 +19,11 @@ public class Hashtag {
 
     private String name; //해쉬태그명
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "review_id")
     private Review review;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
 
