@@ -29,8 +29,8 @@ spring:
 cloud:
   aws:
     credentials:
-      access-key: AKIA525OD6E6XJDNER7W        # AWS IAM AccessKey 적기
-      secret-key: gtzTqq85SvYtfK8ptXWTyi3JoVFHgoGhNMMF22lG    # AWS IAM SecretKey 적기
+      access-key: access-key       # AWS IAM AccessKey 적기
+      secret-key: secret-key    # AWS IAM SecretKey 적기
     s3:
       bucket: zreview-bucket    # ex) marryting-gyunny
     region:
