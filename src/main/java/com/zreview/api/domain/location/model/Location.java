@@ -1,13 +1,17 @@
 package com.zreview.api.domain.location.model;
 
+import com.zreview.api.domain.location.api.request.PostLocationRequest;
+import com.zreview.api.domain.member.model.Member;
+import com.zreview.api.domain.review.api.request.PostReviewRequest;
 import com.zreview.api.domain.review.model.Hashtag;
 import com.zreview.api.domain.review.model.Review;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
-import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,4 +36,9 @@ public class Location {
 
     @OneToMany(mappedBy = "location")
     private List<Hashtag> hashtags= new ArrayList<>(); //해쉬태그
+
+    public Location(PostLocationRequest postLocationRequest,Point point) {
+        this.name=postLocationRequest.getName();
+        this.point=point;
+    }
 }

@@ -17,18 +17,9 @@ public class PostLocationRequest {
     @NotBlank
     private String name;
 
-    @NotNull
-    private String content;
+    private Double latitude;
 
-    private String x;
-
-    private String y;
-
-    @NotNull
-    private int rating; //별점
-
-    @NotNull
-    private Queue<String> hashtags; //해시태그
+    private Double longitude;
 
 
 }
