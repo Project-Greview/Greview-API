@@ -2,14 +2,15 @@ package com.zreview.api.domain.member.api.request;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Getter
-@RequiredArgsConstructor
+@Setter
 public class JoinMemberRequest {
 
-    private final String email;
-    private final String password;
-    private final String phone;
-    private final String name;
-    private final String nickname;
+    private String email;
+    private String password;
+    private String phone;
+    private String name;
+    private String nickname;
 }
