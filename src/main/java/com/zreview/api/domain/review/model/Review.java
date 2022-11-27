@@ -1,5 +1,6 @@
 package com.zreview.api.domain.review.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.zreview.api.domain.location.model.Location;
 import com.zreview.api.domain.member.model.Member;
 import com.zreview.api.domain.review.api.request.PostReviewRequest;
@@ -44,6 +45,7 @@ public class Review {
     @LastModifiedDate
     private LocalDateTime updated_at;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "review",cascade = CascadeType.PERSIST)
     private List<Hashtag> hashtags = new ArrayList<>();
 

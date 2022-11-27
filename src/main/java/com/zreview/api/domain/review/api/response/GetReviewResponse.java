@@ -17,6 +17,4 @@ public class GetReviewResponse {
 
     private Review review;
 
-    private List<String> tags;
-
 }

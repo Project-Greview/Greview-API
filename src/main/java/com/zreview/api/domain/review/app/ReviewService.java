@@ -54,15 +54,7 @@ public class ReviewService {
     public GetReviewResponse getReview(Long reviewId){
         Optional<Review> review= reviewRepository.findById(reviewId);
 
-        List<Hashtag> hashtags=hashTagRepository.findByReview(review.get());
-
-        List<String> tag_result=new ArrayList<>();
-
-        for (Hashtag hashtag:hashtags){
-            tag_result.add(hashtag.getName());
-        }
-
-        GetReviewResponse getReviewResponse= new GetReviewResponse(review.get(),tag_result);
+        GetReviewResponse getReviewResponse= new GetReviewResponse(review.get());
 
         return getReviewResponse;
     }
