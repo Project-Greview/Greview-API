@@ -44,6 +44,9 @@ public class Review {
     @LastModifiedDate
     private LocalDateTime updated_at;
 
+    @OneToMany(mappedBy = "review",cascade = CascadeType.PERSIST)
+    private List<Hashtag> hashtags = new ArrayList<>();
+
     @Column(columnDefinition = "integer default 0",nullable = false)
     private int views; //조회수
 

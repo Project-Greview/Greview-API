@@ -36,18 +36,18 @@ public class ReviewService {
     public ReviewResultResponse postReview(String email, PostReviewRequest postReviewRequest){
         Optional<Member> member= memberRepository.findByEmail(email);
         Review review = new Review(member.get(), postReviewRequest);
-        reviewRepository.save(review);
 
-        int tag_size=postReviewRequest.getHashtags().size();
 
-        if(tag_size != 0){
-            for(int i=0; i<tag_size; i++){
-                Hashtag hashtag=
-                        new Hashtag(review,postReviewRequest.getHashtags().poll());
-                hashTagRepository.save(hashtag);
-            }
+        List<String> tagNames=postReviewRequest.getHashtags();
+        List<Hashtag> hashtags=new ArrayList<>();
+        for (String name : tagNames){
+            Hashtag hashtag =new Hashtag(review,name);
+            hashtags.add(hashtag);
+            hashTagRepository.save(hashtag);
         }
-
+        review.setHashtags(hashtags);
+        reviewRepository.save(review);
+        System.out.println(review.getHashtags());
         return new ReviewResultResponse(review.getId(),"리뷰 등록 완료");
     }
 
