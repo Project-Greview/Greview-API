@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "upload", description = "파일 업로드 API")
 public class FileController {
      private final S3UploadService s3UploadService;
 
