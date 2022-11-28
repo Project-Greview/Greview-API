@@ -14,7 +14,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Tag(name = "review", description = "리뷰 API")
 public class ReviewController {
 
     private final ReviewService reviewService;
