@@ -1,5 +1,6 @@
 package com.zreview.api.domain.location.api;
 
+import com.zreview.api.domain.location.api.reponse.SearchResponseDto;
 import com.zreview.api.domain.location.api.request.PostLocationRequest;
 import com.zreview.api.domain.location.app.LocationService;
 import com.zreview.api.domain.location.app.utils.LocationDto;
@@ -30,5 +31,11 @@ public class LocationController {
     public ResponseEntity<?> PostLocation(@RequestBody PostLocationRequest postLocationRequest) throws ParseException {
         locationService.postLocation(postLocationRequest);
         return ResponseEntity.ok(null);
+    }
+
+    @GetMapping("/location/search")
+    public ResponseEntity<?> SearchLocation(@PathVariable String hashtag) throws ParseException {
+        List<SearchResponseDto> searchResponseDtos = locationService.searchLocation(hashtag);
+        return ResponseEntity.ok(searchResponseDtos);
     }
 }

@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface HashTagRepository extends JpaRepository<Hashtag,Long> {
 
     List<Hashtag> findByReview(Review review);
+    List<Hashtag> findAllByName(String name);
+
 }
