@@ -25,7 +25,7 @@ public class ReviewController {
     @Operation(summary = "리뷰 등록", tags = { "Review Controller" })
     @PostMapping("/review")
     public ResponseEntity<?> PostReview(@RequestBody PostReviewRequest postReviewRequest,
-        @AuthenticationPrincipal final MemberDetails member){
+      @AuthenticationPrincipal final MemberDetails member){
         //String email= "test@naver.com"; //jwt로 변경필요
         ReviewResultResponse response= reviewService.postReview(member.getEmail(),postReviewRequest);
         return ResponseEntity.ok(response);

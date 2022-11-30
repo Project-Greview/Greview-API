@@ -29,8 +29,9 @@ public class Hashtag {
     @JoinColumn(name = "location_id")
     private Location location;
 
-    public Hashtag(Review review,String name) {
+    public Hashtag(Review review,String name,Location location) {
         this.review=review;
         this.name = name;
+        this.location=location;
     }
 }

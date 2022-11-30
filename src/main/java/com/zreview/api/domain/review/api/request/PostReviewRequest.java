@@ -24,6 +24,9 @@ public class PostReviewRequest {
     private int rating; //별점
 
     @NotNull
+    private Long LocationId;
+
+    @NotNull
     private List<String> hashtags; //해시태그
 
 
