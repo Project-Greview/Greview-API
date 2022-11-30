@@ -20,8 +20,9 @@ public class CommentController {
     }
 
     @PostMapping("/comment")
-    public ResponseEntity<?> postComment(@RequestBody PostCommentRequest postCommentRequest) {
-        commentService.postComment("test@naver.com", postCommentRequest);
+    public ResponseEntity<?> postComment(@RequestBody PostCommentRequest postCommentRequest,
+                                         @AuthenticationPrincipal final MemberDetails member) {
+        commentService.postComment(member.getEmail(), postCommentRequest);
         return ResponseEntity.ok(null);
     }
 
