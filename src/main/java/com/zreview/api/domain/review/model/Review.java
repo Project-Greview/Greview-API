@@ -1,5 +1,6 @@
 package com.zreview.api.domain.review.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.zreview.api.domain.location.model.Location;
 import com.zreview.api.domain.member.model.Member;
@@ -35,7 +36,8 @@ public class Review {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="location_id")
     private Location location;
 

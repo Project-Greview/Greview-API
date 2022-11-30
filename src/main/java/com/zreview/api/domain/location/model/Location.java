@@ -1,8 +1,7 @@
 package com.zreview.api.domain.location.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.zreview.api.domain.location.api.request.PostLocationRequest;
-import com.zreview.api.domain.member.model.Member;
-import com.zreview.api.domain.review.api.request.PostReviewRequest;
 import com.zreview.api.domain.review.model.Hashtag;
 import com.zreview.api.domain.review.model.Review;
 import lombok.AccessLevel;
@@ -29,11 +28,13 @@ public class Location {
     @Column(columnDefinition = "integer default 0",nullable = false)
     private int rating; //별점
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "location")
     private List<Review> reviews = new ArrayList<>(); //리뷰
 
     private Point point; //위도, 경도
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "location")
     private List<Hashtag> hashtags= new ArrayList<>(); //해쉬태그
 

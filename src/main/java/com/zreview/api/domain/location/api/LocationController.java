@@ -3,9 +3,7 @@ package com.zreview.api.domain.location.api;
 import com.zreview.api.domain.location.api.reponse.SearchResponseDto;
 import com.zreview.api.domain.location.api.request.PostLocationRequest;
 import com.zreview.api.domain.location.app.LocationService;
-import com.zreview.api.domain.location.app.utils.LocationDto;
 import com.zreview.api.domain.location.model.Location;
-import io.swagger.v3.oas.annotations.Operation;
 import org.locationtech.jts.io.ParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,4 +36,12 @@ public class LocationController {
         List<SearchResponseDto> searchResponseDtos = locationService.searchLocation(hashtag);
         return ResponseEntity.ok(searchResponseDtos);
     }
+
+    @GetMapping("/location/{name}")
+    public ResponseEntity<?> GetLocationByName(@PathVariable String name) throws ParseException {
+        List<Location> locationList = locationService.searchLocationByName(name);
+        return ResponseEntity.ok(locationList);
+    }
+
+
 }

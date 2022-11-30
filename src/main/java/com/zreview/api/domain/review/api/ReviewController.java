@@ -7,11 +7,12 @@ import com.zreview.api.domain.review.api.response.ReviewResultResponse;
 import com.zreview.api.domain.review.app.ReviewService;
 import com.zreview.api.domain.review.model.Review;
 import com.zreview.api.global.security.MemberDetails;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import org.locationtech.jts.io.ParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ReviewController {
@@ -22,7 +23,6 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @Operation(summary = "리뷰 등록", tags = { "Review Controller" })
     @PostMapping("/review")
     public ResponseEntity<?> PostReview(@RequestBody PostReviewRequest postReviewRequest,
       @AuthenticationPrincipal final MemberDetails member){
@@ -30,13 +30,17 @@ public class ReviewController {
         ReviewResultResponse response= reviewService.postReview(member.getEmail(),postReviewRequest);
         return ResponseEntity.ok(response);
     }
-
-    @Operation(summary = "리뷰 반환", tags = { "Review Controller" })
     @GetMapping("/review/{reviewId}")
     public ResponseEntity<?> GetReview(@PathVariable Long reviewId ){
         GetReviewResponse getReviewResponse = reviewService.getReview(reviewId);
         return ResponseEntity.ok(getReviewResponse);
 
+    }
+
+    @GetMapping("/review/location/{location}")
+    public ResponseEntity<?> GetReviewByLocation(@PathVariable Long LocationId){
+        List<Review> reviews= reviewService.getReviewByLocation(LocationId);
+        return ResponseEntity.ok(reviews);
     }
 
 

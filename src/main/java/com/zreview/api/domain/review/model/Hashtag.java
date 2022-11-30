@@ -25,6 +25,7 @@ public class Hashtag {
     @JoinColumn(name = "review_id")
     private Review review;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;

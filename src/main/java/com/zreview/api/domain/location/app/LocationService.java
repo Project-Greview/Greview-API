@@ -90,4 +90,8 @@ public class LocationService {
 
         return searchResponseDtos;
     }
+
+    public List<Location> searchLocationByName(String name){
+         return locationRepository.findAllByNameContains(name);
+    }
 }

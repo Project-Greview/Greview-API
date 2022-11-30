@@ -61,4 +61,8 @@ public class ReviewService {
 
         return getReviewResponse;
     }
+
+    public List<Review> getReviewByLocation(Long LocationId){
+        return reviewRepository.findAllByLocationId(LocationId);
+    }
 }
